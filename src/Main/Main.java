@@ -49,11 +49,17 @@ public class Main{
 			}
 		});
 		MenuWindow.add(Maze);
-		
 		//Map Maker button
 		MakeMap.setSize(buttonWidth,buttonHeight);
 		MakeMap.setLocation(140, buttonPostionY);
 		MenuWindow.add(MakeMap);
+		MakeMap.addActionListener(new ActionListener() {	
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				new MakeMap();
+			}
+		});
 		
 		
 		//List Map combobox
@@ -85,7 +91,6 @@ public class Main{
 			File map = new File("./Map " + i + ".map");
 			if(map.exists())
 			{
-				System.out.println("Map " + i);
 				mapListStr.add("Map " + i +".map");
 				MapExist = true;
 			}
