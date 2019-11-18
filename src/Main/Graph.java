@@ -35,7 +35,6 @@ public class Graph {
 		while (!queue.isEmpty()) {
 			int temp = queue.pollFirst();
 			while (!visited[temp]) {
-
 				visited[temp] = true;
 				for (int x : adj[temp]) {
 					if (!visited[x]) {
@@ -43,7 +42,6 @@ public class Graph {
 						if (parent[x] == -1)
 							parent[x] = temp;
 					}
-
 				}
 			}
 		}

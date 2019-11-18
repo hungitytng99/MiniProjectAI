@@ -82,7 +82,7 @@ public class Main{
 		MenuWindow.setVisible(true);
 		
 	}
-	
+
 	
 	private void getMapList() {
 		// TODO Auto-generated method stub

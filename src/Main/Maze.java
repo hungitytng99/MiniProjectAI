@@ -20,11 +20,11 @@ public class Maze {
 	public static final int rows = 20;
 	public static final int columns = 20;
 	public static final int panelSize = 25;
-	public static int map[][] = new int[columns][rows];
-	private int Start;
-	private int End;
+	private static int map[][] = new int[columns][rows];
+	public int Start;
+	public int End;
 	LinkedList<Tile> tileList = new LinkedList<Tile>();
-	Graph graph = new Graph(Graph.numOfElement);
+	
 
 	public Maze(String str) {
 		loadMap(str);
@@ -55,17 +55,11 @@ public class Maze {
 		Go.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				graph.Shortest(graph, map, Start, End);
-				int shortWay[] = new int[100];
-				int i = 0;
-				while (graph.parent[End] != Start) {
-					shortWay[i++] = graph.parent[End];
-					End = graph.parent[End];
-				}
-				for(int k = 0; k < i; k++)
-				{
-					tileList.get(shortWay[k]).setBackground(Color.pink);
-				}
+				Path path1 = new Path();
+				path1.getData(tileList,map,Start,End);
+				Thread t1 = new Thread(path1);
+				t1.start();
+				
 			}
 					
 		});
