@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 public class Main{
-	JFrame MenuWindow = new JFrame();
+	public JFrame MenuWindow = new JFrame();
 	JButton Maze = new JButton("Maze");
 	JButton MakeMap = new JButton("Make Map");
 	JComboBox<String> mapListBox;
@@ -57,7 +57,9 @@ public class Main{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				new MakeMap();
+				MakeMap makeMapFrame = new MakeMap();
+				makeMapFrame.getParent(makeMapFrame);;
+				MenuWindow.setVisible(false);
 			}
 		});
 		
@@ -78,9 +80,7 @@ public class Main{
 			}
 		});
 		MenuWindow.add(Exit);
-		//
 		MenuWindow.setVisible(true);
-		
 	}
 
 	
