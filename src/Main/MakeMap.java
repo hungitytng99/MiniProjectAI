@@ -105,8 +105,12 @@ public class MakeMap extends JFrame {
 					} else if (map[x][y] == 1) {
 						tile.setBackground(Color.WHITE);
 					} else if (map[x][y] == 2) {
+						hasStart = true;
+						tile.isStart = true;
 						tile.setBackground(Color.GREEN);
 					} else if (map[x][y] == 3) {
+						tile.isEnd = true;
+						hasEnd = true;
 						tile.setBackground(Color.RED);
 					}
 

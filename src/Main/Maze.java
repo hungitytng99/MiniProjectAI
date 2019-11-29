@@ -64,7 +64,7 @@ public class Maze {
 				if (t1.isAlive() == false) {
 					resetMap();
 					Path path1 = new Path();
-					path1.getData(tileList, map, Start, End, choiceAnimation);
+					path1.getData(tileList, map, Start, End, choiceAnimation,MazeWindow);
 					t1 = new Thread(path1);
 					t1.start();
 				}
@@ -111,20 +111,14 @@ public class Maze {
 				tile.setLocation(x * panelSize + 23, y * panelSize + 25);
 				if (map[x][y] == 0) {
 					tile.setBackground(Color.GRAY);
-				} else if(map[x][y] == 1)
-				{
+				} else if (map[x][y] == 1) {
 					tile.setBackground(Color.WHITE);
-				}
-				else if(map[x][y] == 2)
-				{
+				} else if (map[x][y] == 2) {
 					tile.setBackground(Color.green);
-					Start = y*columns + x;
-				}
-				else if(map[x][y] ==3)
-				{
+					Start = y * columns + x;
+				} else if (map[x][y] == 3) {
 					tile.setBackground(Color.red);
-					End  = y*rows + x;
-					System.out.println(End);
+					End = y * rows + x;
 				}
 				tile.setVisible(true);
 				MazeWindow.add(tile);

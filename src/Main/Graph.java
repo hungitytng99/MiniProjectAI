@@ -3,6 +3,8 @@ package Main;
 import java.awt.Color;
 import java.util.LinkedList;
 
+import javax.swing.JOptionPane;
+
 public class Graph {
 	LinkedList<Tile> tileList;
 	public static final int numOfElement = Maze.columns * Maze.rows;
@@ -45,10 +47,6 @@ public class Graph {
 
 	}
 
-	static void printArray(int[] arr) {
-		for (int i = 0; i < arr.length; i++)
-			System.out.println(i + " : " + arr[i]);
-	}
 
 	void printPath(int Start, int End) {
 		int[] tmp = new int[numOfElement];
@@ -61,12 +59,13 @@ public class Graph {
 		}
 		tmp[n++] = Start;
 		// printArray(tmp);
+
 		for (int i = 0; i < n; i++) {
 			tileList.get(tmp[i]).setBackground(Color.orange);
 		}
 		tileList.get(Start).setBackground(Color.green);
 		tileList.get(End).setBackground(Color.red);
-
+		JOptionPane.showMessageDialog(Path.frame, "Find " + (int) (gScore[End] - 1) + " steps.");
 	}
 
 	public void findShortest(int Start, int End) {// Using A Star algorithm
@@ -99,6 +98,7 @@ public class Graph {
 			open.remove(open.indexOf(u));
 			for (int v : adj[u]) {
 				if (v == End) {
+					gScore[v] = gScore[u] + 1;
 					previous[v] = u;
 					isFound = true;
 					break;
